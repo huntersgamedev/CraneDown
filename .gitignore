@@ -1,0 +1,6 @@
+*.csproj
+*.sln
+*.ide
+*.lock
+CraneDown/Library/
+CraneDown/Temp/UnityLockfile
