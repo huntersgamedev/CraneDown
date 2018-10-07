@@ -4,3 +4,4 @@
 *.lock
 CraneDown/Library/
 CraneDown/Temp/UnityLockfile
+CraneDown/.vs
