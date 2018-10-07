@@ -12,6 +12,8 @@ public class Winch : MonoBehaviour {
     public float doorMoveRate;
     public float CloseLocation;
     public GameObject Door;
+    public GameObject Arrow;
+    public Material completeColor;
 
 
     // Use this for initialization
@@ -19,6 +21,8 @@ public class Winch : MonoBehaviour {
     {
         //makes platform ignore this objects collider
         gameObject.layer = 9;
+        Arrow.transform.parent = null;
+        Arrow.SetActive(false);
     }
 	
 	
@@ -27,12 +31,30 @@ public class Winch : MonoBehaviour {
         if (Door.transform.position.x <= CloseLocation)
         {
             Closed = true;
+            Arrow.SetActive(false);
+            GetComponent<MeshRenderer>().material = completeColor;
         }
 
         
     }
 
-  
+
+    private void OnMouseOver()
+    {
+        if (Closed == false)
+        {
+            Arrow.SetActive(true);
+        }
+        
+    }
+
+
+
+    private void OnMouseExit()
+    {
+        Arrow.SetActive(false);
+    }
+
     private void OnMouseDown()
     {
         

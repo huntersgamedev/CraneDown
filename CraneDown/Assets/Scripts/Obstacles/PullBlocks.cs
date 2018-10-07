@@ -12,9 +12,12 @@ public class PullBlocks : MonoBehaviour {
     public float FallLocation;
     private Rigidbody rb;
 
+    public GameObject Arrow;
+
     // Use this for initialization
     void Start() {
         rb = GetComponent<Rigidbody>();
+        Arrow.SetActive(false);
     }
 
     // Update is called once per frame
@@ -26,7 +29,7 @@ public class PullBlocks : MonoBehaviour {
             {
                 rb.isKinematic = false;
                 fallen = true;
-                print("rigid boy active");
+                Arrow.SetActive(false);
             }
         }
 
@@ -36,12 +39,26 @@ public class PullBlocks : MonoBehaviour {
             {
                 rb.isKinematic = false;
                 fallen = true;
-                print("rigid boy active");
+                Arrow.SetActive(false);
             }
         }
    
 
     }
+
+
+
+    private void OnMouseOver()
+    {
+        Arrow.SetActive(true);
+    }
+
+    private void OnMouseExit()
+    {
+        Arrow.SetActive(false);
+    }
+
+
 
     private void OnMouseDown()
     {

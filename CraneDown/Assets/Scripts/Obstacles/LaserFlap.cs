@@ -15,11 +15,14 @@ public class LaserFlap : MonoBehaviour {
     public float CloseLocation = 355f;
     public float laserOffLocation = 300;
     public GameObject Laser;
+    public GameObject Arrow;
 
     // Use this for initialization
     void Start () {
        
         gameObject.layer = 9;
+        Arrow.transform.parent = null;
+        Arrow.SetActive(false);
     }
 	
 	// Update is called once per frame
@@ -27,6 +30,27 @@ public class LaserFlap : MonoBehaviour {
         MoveBackToOrigin();
         LaserChecker();
 	}
+
+
+
+
+    private void OnMouseOver()
+    {
+        Arrow.SetActive(true);
+    }
+
+    private void OnMouseExit()
+    {
+        Arrow.SetActive(false);
+    }
+
+
+
+
+
+
+
+
 
 
     private void OnMouseDown()
