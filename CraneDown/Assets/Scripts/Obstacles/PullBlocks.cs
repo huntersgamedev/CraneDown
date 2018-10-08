@@ -64,6 +64,7 @@ public class PullBlocks : MonoBehaviour {
     {
         //sets mouse position when you click on an object
         ClickPos = Input.mousePosition;
+        //FindObjectOfType<AudioManager>().Play("test");
     }
     private void OnMouseDrag()
     {

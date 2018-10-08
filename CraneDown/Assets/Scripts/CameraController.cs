@@ -3,11 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraController : MonoBehaviour {
-
+    //camera movement stats
     private float camY;
     public float CamSpeed;
     public float CraneUpLimit;
     public float CraneDownLimit;
+    
+    //gameobjects
+    public GameObject platform;
+    public GameObject UI;
+    //UI
+    private float PopupDistance=16.2f;
+    private bool IndicatorOn = false;
 
 
 
@@ -20,7 +27,13 @@ public class CameraController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         CameraCrane();
+        UpdateUI();
+      
 	}
+
+
+
+
 
     private void CameraCrane()
     {
@@ -47,5 +60,25 @@ public class CameraController : MonoBehaviour {
         
 
 
+    }
+
+    private void UpdateUI()
+    {
+        float platformDistance = Mathf.Abs(platform.transform.position.y - transform.position.y);
+       
+       
+
+        if (platformDistance > PopupDistance)
+        {
+            UI.GetComponent<PlayerUI>().GetPlatformDistance(platformDistance);
+            IndicatorOn = true;
+        }
+
+        else if (platformDistance < PopupDistance&& IndicatorOn==true)
+        {
+            print("trun offpopup");
+            UI.GetComponent<PlayerUI>().PlatDistUI.SetActive(false);
+            IndicatorOn = false;
+        }
     }
 }

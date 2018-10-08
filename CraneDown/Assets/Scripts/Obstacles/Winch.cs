@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
+
+
 public class Winch : MonoBehaviour {
    //winch
     Vector3 ClickPos;
@@ -78,7 +82,7 @@ public class Winch : MonoBehaviour {
         //gets the mouse's  position x drag length
         float dragY = Input.mousePosition.y - ClickPos.y;
 
-        print(dragY);
+     
 
 
 
