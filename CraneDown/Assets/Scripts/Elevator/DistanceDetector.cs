@@ -61,13 +61,13 @@ public class DistanceDetector : MonoBehaviour {
         if (ObstacleDistance > LeftDist )
         {
             ObstacleDistance = LeftDist;
-            print("left");
+         
         }
 
         if (ObstacleDistance > RightDist  )
         {
             ObstacleDistance = RightDist;
-            print("right");
+            
         }
 
 

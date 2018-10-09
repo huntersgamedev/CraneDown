@@ -16,7 +16,16 @@ public class PlayerUI : MonoBehaviour {
 
     //gameoverscreen
     public GameObject GameOverUI;
-   
+    public Text ScoreText;
+
+    //Score UI
+    public GameObject ScoreUI;
+    int score;
+    public Text ScoreDisplay;
+    public Image AddOne;
+
+    float addOneTimer = 0;
+    const float AddOneVisibleTime = .5f;
 
 	// Use this for initialization
 	void Start () {
@@ -25,7 +34,16 @@ public class PlayerUI : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if(addOneTimer >= 0)
+        {
+            addOneTimer -= Time.deltaTime;
+
+            if (addOneTimer <= 0)
+            {
+                AddOne.GetComponent<Image>().enabled = false;
+            }
+        }
+        
 	}
 
     public void GetPlatformDistance(float distance)
@@ -64,4 +82,27 @@ public class PlayerUI : MonoBehaviour {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         Time.timeScale = 1;
     }
+
+
+    public void SetScore()
+    {
+        Debug.Log("setscore called");
+        score++;
+        ScoreDisplay.text = score.ToString();
+        AddOne.GetComponent<Image>().enabled = true;
+        //StartCoroutine(TogglePopUp());
+        addOneTimer = AddOneVisibleTime;
+
+    }
+
+    
+
+    public void SetGameOverScreen()
+    {
+        GameOverUI.SetActive(true);
+        ScoreText.text = "Your Score is: " + score ;
+    }
+
+
+
 }

@@ -140,7 +140,7 @@ GameObject:
   - component: {fileID: 114059659895796734}
   - component: {fileID: 114328557267960686}
   m_Layer: 5
-  m_Name: PlayerUI
+  m_Name: PlayerUI_LOCAL_17588
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
