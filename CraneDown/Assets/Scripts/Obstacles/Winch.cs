@@ -32,11 +32,12 @@ public class Winch : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Door.transform.position.x <= CloseLocation)
+        if (Door.transform.position.x <= CloseLocation && Closed==false)
         {
             Closed = true;
             Arrow.SetActive(false);
             GetComponent<MeshRenderer>().material = completeColor;
+            FindObjectOfType<PlayerUI>().SetScore();
         }
 
         

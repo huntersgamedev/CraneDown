@@ -30,6 +30,8 @@ public class PullBlocks : MonoBehaviour {
                 rb.isKinematic = false;
                 fallen = true;
                 Arrow.SetActive(false);
+                FindObjectOfType<PlayerUI>().SetScore();
+
             }
         }
 
@@ -40,6 +42,8 @@ public class PullBlocks : MonoBehaviour {
                 rb.isKinematic = false;
                 fallen = true;
                 Arrow.SetActive(false);
+                FindObjectOfType<PlayerUI>().SetScore();
+
             }
         }
    

@@ -50,7 +50,8 @@ public class elevatorDown : MonoBehaviour {
             Physics.Raycast(LeftSensor, -Vector3.up, out hit, 1.6f,9)||
             Physics.Raycast(RightSensor, -Vector3.up, out hit, 1.6f,9))
         {
-            FindObjectOfType<PlayerUI>().GameOverUI.SetActive(true);
+            FindObjectOfType<PlayerUI>().SetGameOverScreen();
+ 
             GetComponent<Rigidbody>().isKinematic = false;
             Time.timeScale = 0f;
            

@@ -20,6 +20,7 @@ public class VineMaster : MonoBehaviour {
         WeakPointsLeft--;
         if (WeakPointsLeft <= 0)
         {
+            FindObjectOfType<PlayerUI>().SetScore();
             Destroy(gameObject);
         }
     }
