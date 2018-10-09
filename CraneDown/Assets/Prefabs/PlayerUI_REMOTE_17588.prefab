@@ -74,7 +74,7 @@ GameObject:
   - component: {fileID: 114059659895796734}
   - component: {fileID: 114328557267960686}
   m_Layer: 5
-  m_Name: PlayerUI
+  m_Name: PlayerUI_REMOTE_17588
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -261,6 +261,10 @@ MonoBehaviour:
   Orange: {r: 0.7372549, g: 0.454902, b: 0.14901961, a: 1}
   Red: {r: 0.5921569, g: 0.1137255, b: 0.1137255, a: 1}
   GameOverUI: {fileID: 1873069880394660}
+  ScoreText: {fileID: 0}
+  ScoreUI: {fileID: 0}
+  ScoreDisplay: {fileID: 0}
+  AddOne: {fileID: 0}
 --- !u!114 &114428536398528928
 MonoBehaviour:
   m_ObjectHideFlags: 1
