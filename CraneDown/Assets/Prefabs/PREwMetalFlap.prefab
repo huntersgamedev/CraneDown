@@ -327,7 +327,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: d6194a6370a10244a81f301ab4fb7e37, type: 3}
+  - {fileID: 2100000, guid: 384107acea6eadb4faa964eb4ee9ea42, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -385,7 +385,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoveSensitivity: 0.1
-  MoveRate: 5
+  MoveRate: 6
   doorMoveRate: 0
   CloseLocation: 355
   laserOffLocation: 300
