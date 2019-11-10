@@ -5,7 +5,8 @@ Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: MAT_Mousebutton
   m_Shader: {fileID: 4800000, guid: d0a63f7d65209534190d40bf459cea7c, type: 3}
   m_ShaderKeywords: 
@@ -64,6 +65,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _SampleTexture2D_3045889A_Texture:
         m_Texture: {fileID: 2800000, guid: 3cae3875b38326b439c2f02177cba6f0, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_3A40BCE9_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 6f9b2ca3415b99e489de50829d9cd083, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SampleTexture2D_5E01912F_Texture:

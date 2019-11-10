@@ -5,7 +5,8 @@ Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: MAT_RedArrow
   m_Shader: {fileID: 4800000, guid: be50dc1a42f852047b25cb0d235f4e3d, type: 3}
   m_ShaderKeywords: 
@@ -64,6 +65,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _SampleTexture2D_5E01912F_Texture:
         m_Texture: {fileID: 2800000, guid: 394b8c1660a0b3842a8a9b220a4fa9e0, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_79F8E248_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 3cae3875b38326b439c2f02177cba6f0, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SampleTexture2D_D752ABEA_Texture:

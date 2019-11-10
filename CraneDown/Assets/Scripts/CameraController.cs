@@ -4,16 +4,17 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour {
     //camera movement stats
-    private float camY;
+    [HideInInspector]
+    public float camY;
     public float CamSpeed;
-    public float CraneUpLimit;
-    public float CraneDownLimit;
+    public float CraneUpLimit=-32f;
+    public float CraneDownLimit=-160f;
     
     //gameobjects
     public GameObject platform;
     public GameObject UI;
     //UI
-    private float PopupDistance=16.2f;
+    private float PopupDistance=50f;
     private bool IndicatorOn = false;
 
 
@@ -39,15 +40,19 @@ public class CameraController : MonoBehaviour {
     {
 
 
-        camY = Input.GetAxis("Vertical");
+        //camY = Input.GetAxis("Vertical");
+        //Debug.Log(Input.GetAxis("Vertical"));
         //Checks if you're craneing to high and puts it back in bounds
-        if (transform.position.y > CraneUpLimit)
+        float distance = transform.position.y - platform.transform.position.y;
+        
+
+        if (distance > CraneUpLimit)
         {
             transform.position = new Vector3(transform.position.x, transform.position.y- .1f , transform.position.z);
         }
 
         // checks to see if your craneing to low and puts it back in bounds
-        else if(transform.position.y < CraneDownLimit) 
+        else if(distance < CraneDownLimit) 
         {
             transform.position = new Vector3(transform.position.x, transform.position.y + .1f, transform.position.z);
         }
@@ -65,8 +70,8 @@ public class CameraController : MonoBehaviour {
     private void UpdateUI()
     {
         float platformDistance = Mathf.Abs(platform.transform.position.y - transform.position.y);
-       
-       
+        //Debug.Log(platformDistance);
+
 
         if (platformDistance > PopupDistance)
         {

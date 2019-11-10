@@ -5,7 +5,8 @@ Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: MAT_GreenArow
   m_Shader: {fileID: 4800000, guid: 631dbf3ca4c2aa04086e48c459be7214, type: 3}
   m_ShaderKeywords: 
@@ -56,6 +57,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _SampleTexture2D_2DCD2578_Texture:
         m_Texture: {fileID: 2800000, guid: 0cf723724fbf5044ea19ad03ecd8776c, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_4109B16B_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 394b8c1660a0b3842a8a9b220a4fa9e0, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SampleTexture2D_5E01912F_Texture:

@@ -20,7 +20,7 @@ public class PlayerUI : MonoBehaviour {
 
     //Score UI
     public GameObject ScoreUI;
-    int score;
+    public int score;
     public Text ScoreDisplay;
     public Image AddOne;
 

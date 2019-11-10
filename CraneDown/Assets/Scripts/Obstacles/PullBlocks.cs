@@ -13,39 +13,43 @@ public class PullBlocks : MonoBehaviour {
     private Rigidbody rb;
 
     public GameObject Arrow;
+    public DragHealth dragValues;
+    public LerpInfo lerpValues;
 
     // Use this for initialization
     void Start() {
         rb = GetComponent<Rigidbody>();
         Arrow.SetActive(false);
+        lerpValues.StartPoint = transform.position.x;
+       
     }
 
     // Update is called once per frame
     void Update() {
 
-        if (left == false)
-        {
-            if (transform.position.x > FallLocation && fallen == false)
-            {
-                rb.isKinematic = false;
-                fallen = true;
-                Arrow.SetActive(false);
-                FindObjectOfType<PlayerUI>().SetScore();
+    //    if (left == false)
+    //    {
+    //        if (transform.position.x > FallLocation && fallen == false)
+    //        {
+    //            rb.isKinematic = false;
+    //            fallen = true;
+    //            Arrow.SetActive(false);
+    //            FindObjectOfType<PlayerUI>().SetScore();
 
-            }
-        }
+    //        }
+    //    }
 
-        else
-        {
-            if (transform.position.x < FallLocation && fallen == false)
-            {
-                rb.isKinematic = false;
-                fallen = true;
-                Arrow.SetActive(false);
-                FindObjectOfType<PlayerUI>().SetScore();
+    //    else
+    //    {
+    //        if (transform.position.x < FallLocation && fallen == false)
+    //        {
+    //            rb.isKinematic = false;
+    //            fallen = true;
+    //            Arrow.SetActive(false);
+    //            FindObjectOfType<PlayerUI>().SetScore();
 
-            }
-        }
+    //        }
+    //    }
    
 
     }
@@ -68,28 +72,49 @@ public class PullBlocks : MonoBehaviour {
     {
         //sets mouse position when you click on an object
         ClickPos = Input.mousePosition;
+        
         //FindObjectOfType<AudioManager>().Play("test");
     }
     private void OnMouseDrag()
     {
-        DragControls();
-      
+        //DragControls();
+        DragControlsNEW();
+
+    }
+
+    private void OnMouseUp()
+    {
+        dragValues.currentDragHealth = dragValues.newDragHealth;
+        dragValues.dragValue = 0;
     }
 
 
+    //Original Version not so great
     void DragControls()
     {
         //gets the mouse's  position x drag length
-        float dragx = Input.mousePosition.x - ClickPos.x;
+        float rawDragX = Input.mousePosition.x - ClickPos.x;
+        float dragX;
+        
+        //allows accurate drag amount wether dragging left or right
+        if (rawDragX > 0)
+        {
+            dragX = Mathf.Abs(rawDragX); 
+        }
+
+        else
+        {
+           dragX= Mathf.Abs(rawDragX)*-1;
+        }
+        Debug.Log("The Drag is"+dragX);
 
        
-
-       
-            if (left == false)
+          if (left == false)
             {
                 //if drag length is greater then move sensitivy move block to the right
-                if (dragx > MoveSensitivity)
+                if (dragX > MoveSensitivity)
                 {
+
                     transform.position = new Vector3(transform.position.x + MoveRate, transform.position.y, transform.position.z);
                     ClickPos = Input.mousePosition;
 
@@ -99,7 +124,7 @@ public class PullBlocks : MonoBehaviour {
             else
             {
                 //if drag length is less then mouse sensitivys negative value move left
-                if (dragx < -MoveSensitivity)
+                if (dragX < -MoveSensitivity)
                 {
                     transform.position = new Vector3(transform.position.x - MoveRate, transform.position.y, transform.position.z);
                     ClickPos = Input.mousePosition;
@@ -117,6 +142,114 @@ public class PullBlocks : MonoBehaviour {
         //checks if left or right mode
       
 
+    }
+
+    
+    
+    
+    
+    // the better version
+    void DragControlsNEW()
+    {
+        //gets the mouse's  position x drag length
+        float rawDragX = Input.mousePosition.x - ClickPos.x;
+        float dragX;
+
+        //allows accurate drag amount wether dragging left or right
+        if (rawDragX > 0)
+        {
+            dragX = Mathf.Abs(rawDragX);
+        }
+
+        else
+        {
+            dragX = Mathf.Abs(rawDragX) * -1;
+        }
+
+
+        //Debug.Log("The Drag is" + dragX);
+
+
+        if (left == false)
+        {
+            //if drag length is greater then move sensitivy move block to the right
+            if (dragX > MoveSensitivity)
+            {
+
+                // transform.position = new Vector3(transform.position.x + MoveRate, transform.position.y, transform.position.z);
+                dragValues.dragValue += dragX;
+                dragBlock(Mathf.Abs(dragValues.dragValue));
+                ClickPos = Input.mousePosition;
+
+            }
+        }
+
+        else
+        {
+            //if drag length is less then mouse sensitivys negative value move left
+            if (dragX < -MoveSensitivity)
+            {
+                //transform.position = new Vector3(transform.position.x - MoveRate, transform.position.y, transform.position.z);
+                dragValues.dragValue += dragX;
+                dragBlock(Mathf.Abs(dragValues.dragValue));
+                ClickPos = Input.mousePosition;
+            }
+
+        }
+
+
+
+
+
+
+
+
+        //checks if left or right mode
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+    public void dragBlock(float dragAmt)
+    {
+        dragValues.newDragHealth = dragValues.currentDragHealth + dragAmt;
+
+
+        float DragTotal = dragValues.newDragHealth / dragValues.dragHealth;
+        
+        if (DragTotal >= 1&&fallen==false)
+        {
+            //Activate pyshics and add a point
+            rb.isKinematic = false;
+            fallen = true;
+            Arrow.SetActive(false);
+            FindObjectOfType<PlayerUI>().SetScore();
+
+        }
+
+        else if(fallen==false)
+        {
+            //LERP the block
+            
+            LerpBlock(DragTotal);
+        }
+    }
+
+
+
+
+    public void LerpBlock(float perc)
+    {
+        transform.position = new Vector3(Mathf.Lerp(lerpValues.StartPoint, lerpValues.endPoint, perc),transform.position.y,transform.position.z);
     }
 
 }

@@ -5,7 +5,8 @@ Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: MAT_OrangeArrow
   m_Shader: {fileID: 4800000, guid: eb158439d1873ba4db605ba66cd8af99, type: 3}
   m_ShaderKeywords: 
@@ -60,6 +61,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _SampleTexture2D_5E01912F_Texture:
         m_Texture: {fileID: 2800000, guid: 394b8c1660a0b3842a8a9b220a4fa9e0, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_A8E65D24_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 0fcfd7841909f67468c6f8f2c0ebbf5e, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SampleTexture2D_D752ABEA_Texture:
