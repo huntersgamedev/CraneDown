@@ -10,5 +10,6 @@ public class LerpInfo
 
     public Vector3 VectorStart;
     public Vector3 VectorEnd;
-
+    [HideInInspector]
+    public float percentage;
 }

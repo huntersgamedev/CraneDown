@@ -16,6 +16,11 @@ public class CameraController : MonoBehaviour {
     //UI
     private float PopupDistance=50f;
     private bool IndicatorOn = false;
+    public Vector3 mousePos;
+
+    private float maxXRange=714.54f, minXRange= 620f;
+    private float maxYRange=984.38f, minYRange= 110f;
+    bool touchingArea = false;
 
 
 
@@ -29,12 +34,83 @@ public class CameraController : MonoBehaviour {
 	void Update () {
         CameraCrane();
         UpdateUI();
+
+        CraneInput();
       
 	}
 
 
 
+    public void CraneInput()
+    {
+       
+        if (Input.GetMouseButtonDown(0)&&IsInArea())
+        {
+            Debug.Log("am i firing");
+            mousePos = Input.mousePosition;
+            touchingArea = true;
+        }
 
+        if (touchingArea)
+        {
+            CameraDrag();
+        }
+
+
+
+        if (Input.GetMouseButtonUp(0))
+        {
+            camY = 0f;
+            touchingArea = false;
+
+
+        }
+
+        
+    }
+   
+
+
+    public bool IsInArea()
+    {
+        bool inZone;
+
+        if(Input.mousePosition.y>minYRange&& Input.mousePosition.y<maxYRange&&
+            Input.mousePosition.x>minXRange&& Input.mousePosition.x< maxXRange)
+        {
+            inZone = true;
+        }
+
+        else
+        {
+            inZone = false;
+        }
+
+
+        return (inZone);
+
+    }
+    
+
+
+
+
+
+
+    private void CameraDrag()
+    {
+        float rawDragY = Input.mousePosition.y - mousePos.y;
+        float dragY = rawDragY;
+
+        if (dragY > .1)
+        {
+            camY = 1;
+        }
+        else if (dragY < -.1)
+        {
+            camY = -1;
+        }
+    }
 
     private void CameraCrane()
     {
